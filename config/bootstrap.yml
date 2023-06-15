@@ -1,0 +1,30 @@
+spring:
+  mail:
+    port: 465
+    host: smtp.qq.com
+    username: xxxxxx@qq.com
+    password: xxxxxx
+    default-encoding: utf-8
+    protocol: smtps
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+            socketFactory:
+              port: 465
+              class: javax.net.ssl.SSLSocketFactory
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: localhost:8848
+      config:
+        # 配置中心地址
+        server-addr: localhost:8848
+  profiles:
+    active: dev

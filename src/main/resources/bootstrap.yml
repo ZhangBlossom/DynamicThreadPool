@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: dynamic-thread-pool
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        namespace: test
+        group: DYNAMIC_THREADPOOL
+      config:
+        group: DYNAMIC_THREADPOOL
+        namespace: test
+        shared-configs:
+          - data-id: dynamic-thread-pool-dev.properties
+            refresh: true
+          - data-id: dynamic-thread-pool-xxl-job-dev.yaml
+            refresh: true
+server:
+  port: 8080
+
+
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:9420/xxl-job-admin/
+    accessToken: default_token
+    executor:
+      appname: dynamic-threadpool-executor
+      ip: localhost
+      port: 9430
+      address:
+      logpath: /data/applogs/xxl-job/jobhandler
+      logretentiondays: 7
